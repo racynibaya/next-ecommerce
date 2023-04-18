@@ -19,6 +19,30 @@ model User {
   accounts      Account[]
   sessions      Session[]
   stripeCustomerId String?
+  orders        Order[]
+}
+
+model Order {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  amount Float
+  currency String
+  status String
+  createdDate DateTime @default(now())
+  paymentIntentID String? @unique
+  products  Product[]
+
+}
+
+model Product {
+  id String @id @default(cuid())
+  name String
+  description String?
+  unit_amount Float
+  image String?
+  quantity Float @default(0)
+  orders Order[]
 }
 
 model Account {

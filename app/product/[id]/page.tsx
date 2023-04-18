@@ -10,16 +10,16 @@ const Product = ({ searchParams }: SearchParamTypes) => {
   console.log(searchParams);
 
   return (
-    <div className='flex justify-between gap-24 py-12 text-gray-700'>
+    <div className='flex flex-col lg:flex-row 2xl items-center justify-between gap-24 py-12 text-gray-700'>
       <Image
         src={image}
         alt={name}
         width={600}
         height={600}
-        className='h-60 w-60'
+        className='w-full'
       />
 
-      <div font-medium text-gray-700>
+      <div className='font-medium text-gray-700'>
         <h1 className='text-2xl  py-2'>{name}</h1>
         <p className='py-2'>{description}</p>
         <p>{features}</p>

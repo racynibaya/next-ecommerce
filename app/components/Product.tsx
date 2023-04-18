@@ -17,7 +17,7 @@ const Product = ({
     <Link
       href={{
         pathname: `/product/${id}`,
-        query: { name, image, unit_amount, description, features },
+        query: { name, image, unit_amount, description, features, id },
       }}
     >
       <div className='text-gray-700'>
@@ -28,7 +28,7 @@ const Product = ({
           width={800}
           className='w-full h-80 object-cover rounded-lg'
         />
-        <div className='font-medium py-2'>
+        <div className='py-2 font-medium'>
           <h1>{name}</h1>
           <h2 className='text-sm text-teal-700'>
             {unit_amount && formatPrice(unit_amount)}
