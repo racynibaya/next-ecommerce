@@ -1,4 +1,4 @@
-import { prisma } from '@/util/Prisma';
+import { prisma } from '@/util/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import formatPrice from '@/util/priceFormat';

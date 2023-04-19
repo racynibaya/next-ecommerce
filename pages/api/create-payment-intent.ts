@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 import { authOptions } from './auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 import { AddCartType } from '@/types/add-cart-type';
-import { prisma } from '@/util/Prisma';
+import { prisma } from '@/util/prisma';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: '2022-11-15',

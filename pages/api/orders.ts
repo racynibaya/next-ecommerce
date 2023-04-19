@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { prisma } from '@/util/Prisma';
+import { prisma } from '@/util/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './auth/[...nextauth]';
 
