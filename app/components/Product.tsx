@@ -27,6 +27,7 @@ const Product = ({
           height={800}
           width={800}
           className='w-full h-80 object-cover rounded-lg'
+          priority={true}
         />
         <div className='py-2 font-medium'>
           <h1>{name}</h1>

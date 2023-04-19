@@ -14,9 +14,10 @@ const Product = ({ searchParams }: SearchParamTypes) => {
       <Image
         src={image}
         alt={name}
-        width={600}
-        height={600}
+        width={300}
+        height={300}
         className='w-full rounded-lg'
+        priority={true}
       />
 
       <div className='font-medium '>

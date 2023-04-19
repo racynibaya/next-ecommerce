@@ -22,7 +22,7 @@ const Nav = ({ user }: Session) => {
   return (
     <nav className='flex justify-between items-center py-12 bg-red'>
       <Link href={'/'}>
-        <h1>Styled</h1>
+        <h1 className='font-lobster text-xl'>Racyn Ibaya</h1>
       </Link>
       <ul className='flex items-center gap-8'>
         {/* Toggle the cart */}
