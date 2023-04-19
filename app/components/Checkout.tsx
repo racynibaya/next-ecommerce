@@ -2,10 +2,12 @@
 
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { useCartStore } from '@/store';
+import { useCartStore, useThemeStore } from '@/store';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CheckoutForm from './CheckoutForm';
+import OrderAnimation from './OrderAnimation';
+import { motion } from 'framer-motion';
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -14,6 +16,7 @@ const stripePromise = loadStripe(
 export default function Checkout() {
   const router = useRouter();
   const cartStore = useCartStore();
+  const themeStore = useThemeStore();
   const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
@@ -44,19 +47,24 @@ export default function Checkout() {
   const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
-      theme: 'flat',
+      theme: themeStore.mode === 'winter' ? 'flat' : 'night',
       labels: 'floating',
     },
   };
 
   return (
     <div>
+      {!clientSecret && <OrderAnimation />}
       {clientSecret && (
-        <div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+        >
           <Elements options={options} stripe={stripePromise}>
             <CheckoutForm clientSecret={clientSecret} />
           </Elements>
-        </div>
+        </motion.div>
       )}
     </div>
   );

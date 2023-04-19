@@ -3,8 +3,7 @@ import Stripe from 'stripe';
 import { authOptions } from './auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 import { AddCartType } from '@/types/add-cart-type';
-
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, User } from '@prisma/client';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: '2022-11-15',
@@ -26,6 +25,8 @@ export default async function handler(
 ) {
   //Get user
   const userSession = await getServerSession(req, res, authOptions);
+  console.log(userSession?.user, 'line 28');
+
   if (!userSession?.user) {
     res.status(403).json({ message: 'Not logged in' });
     return;
@@ -34,6 +35,7 @@ export default async function handler(
   const { items, payment_intent_id } = req.body;
   const total = calculateOrderAmount(items);
   //Create the order data
+
   const orderData = {
     user: { connect: { id: userSession.user?.id } },
     amount: total,

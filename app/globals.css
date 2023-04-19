@@ -12,5 +12,15 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
 
+body {
+    min-width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }

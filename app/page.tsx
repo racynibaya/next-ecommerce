@@ -30,9 +30,6 @@ const getProducts = async () => {
 export default async function Home() {
   const products = await getProducts();
 
-  console.log(products, 'line 33');
-
-
   return (
     <main className='grid grid-cols-fluid gap-12'>
       {products.map(product => (

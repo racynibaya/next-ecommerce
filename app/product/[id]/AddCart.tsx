@@ -2,21 +2,29 @@
 
 import { useCartStore } from '@/store';
 import { AddCartType } from '@/types/add-cart-type';
+import { useState } from 'react';
 
 const AddCart = ({ name, id, image, unit_amount, quantity }: AddCartType) => {
-  console.log(id);
+  const [added, setAdded] = useState(false);
 
+  const handleAddToCart = () => {
+    cartStore.addProduct({ id, name, image, unit_amount, quantity });
+    setAdded(true);
+
+    setTimeout(() => {
+      setAdded(false);
+    }, 1000);
+  };
   const cartStore = useCartStore();
   return (
     <>
       <button
-        className='my-12 text-white py-2 px-6 font-medium rounded-md bg-teal-700 '
-        onClick={() => {
-          console.log('Click');
-          cartStore.addProduct({ id, name, image, unit_amount, quantity });
-        }}
+        className='my-4 btn btn-primary w-full'
+        onClick={handleAddToCart}
+        disabled={added}
       >
-        Add to cart
+        {!added && <span>Add to cart</span>}
+        {added && <span>Adding to cart 😏</span>}
       </button>
     </>
   );

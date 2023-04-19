@@ -27,7 +27,7 @@ const Cart = () => {
       {/* Cart */}
       <motion.div
         onClick={e => e.stopPropagation()}
-        className='bg-white absolute right-0 top-0 w-full lg:w-2/5 h-screen p-12 overflow-y-scroll text-gray'
+        className='bg-base-300 absolute right-0 top-0 w-full lg:w-2/5 h-screen p-12 overflow-y-scroll text-gray'
       >
         {cartStore.onCheckout === 'cart' && (
           <button
@@ -50,7 +50,11 @@ const Cart = () => {
         {cartStore.onCheckout === 'cart' && (
           <>
             {cartStore.cart.map(item => (
-              <motion.div layout className='flex py-4 gap-4' key={item.id}>
+              <motion.div
+                layout
+                className='flex p-4 my-4 rounded-lg gap-4 bg-base-100'
+                key={item.id}
+              >
                 <Image
                   className='rounded-md h-24'
                   src={item.image}
@@ -105,7 +109,7 @@ const Cart = () => {
             <p>Total: {formatPrice(totalPrice)}</p>
             <button
               onClick={() => cartStore.setCheckout('checkout')}
-              className='py-2 mt-4 bg-teal-700 w-full rounded-md text-white'
+              className='py-2 mt-4 bg-primary w-full rounded-md text-white'
             >
               Checkout
             </button>
