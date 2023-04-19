@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { prisma } from '@/util/Prisma';
+import { prisma } from '@/util/prisma';
 import { buffer } from 'micro';
 import { NextApiRequest, NextApiResponse } from 'next';
 
